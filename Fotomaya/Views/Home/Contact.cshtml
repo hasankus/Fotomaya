@@ -1,0 +1,77 @@
+﻿@model Fotomaya.Models.Ayar
+@{
+    ViewBag.Title = "Contact";
+    Layout = "~/Views/Shared/SiteLayout.cshtml";
+}
+
+<div class="site-blocks-cover overlay" style="background-image: url(https://images.hindustantimes.com/img/2021/08/19/1600x900/patrick-dozkVhDyvhQ-unsplash_1628163163817_1629346849962.jpg);" data-aos="fade" data-stellar-background-ratio="0.5">
+    <div class="container">
+        <div class="row align-items-center justify-content-center text-center">
+            <div class="col-md-12">
+                <h1>Neredeyiz?</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="site-section bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7 mb-5" data-aos="fade">
+                <form action="#" class="p-5 bg-white">
+                    <div>
+                        <h4>Bize Ulaşın</h4>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-6 mb-3 mb-md-0">
+                            <label class="text-black" for="fname">Adınız</label>
+                            <input type="text" id="fname" class="form-control">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="text-black" for="lname">Soyadınız</label>
+                            <input type="text" id="lname" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-12">
+                            <label class="text-black" for="email">Email Adresiniz</label>
+                            <input type="email" id="email" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-12">
+                            <label class="text-black" for="subject">Mesaj Konusu</label>
+                            <input type="subject" id="subject" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-12">
+                            <label class="text-black" for="message">Mesaj</label>
+                            <textarea name="message" id="message" cols="30" rows="7" class="form-control"></textarea>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-12">
+                            <input type="submit" value="Mesaj Gönder" class="btn btn-primary py-2 px-4 text-white">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-5" data-aos="fade" data-aos-delay="100">
+                <div class="p-4 mb-3 bg-white">
+                    <p class="mb-0 font-weight-bold">Adres</p>
+                    <p class="mb-4">@Model.site_iletisim_adres</p>
+                    <p class="mb-0 font-weight-bold">Telefon</p>
+                    <p class="mb-4"><a href="#">@Model.site_iletisim_telefon</a></p>
+                    <p class="mb-0 font-weight-bold">Email</p>
+                    <p class="mb-0"><a href="#">@Model.site_iletisim_email</a></p>
+                </div>
+                <div class="p-4 mb-3 bg-white">
+                    <div>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3639.128265294363!2d36.161957005144046!3d36.22078457507801!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb8fccf17aac16d0d!2smAyaNet+Yaz%C4%B1l%C4%B1m+ve+%C4%B0nternet+Hizmetleri!5e0!3m2!1str!2str!4v1565260140564!5m2!1str!2str" width="400" height="375" frameborder="0" style="border:0" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,105 @@
+﻿@model Fotomaya.Models.Ayar
+@{
+    ViewBag.Title = "SiteAyar";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+    
+<div class="right_col" role="main">
+    
+    <div class="">
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Site Ayarları</h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li>
+                                <a class="collapse-link" align="right"><i class="fa fa-chevron-up"></i></a>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                       
+                        <form action="/Admin/SiteAyar/" method="post" enctype="multipart/form-data" class="form-horizontal form-label-left">
+                            @using (Html.BeginForm())
+                            {
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                                <div class="item form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="">
+                                        Site Adı <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <input id="site_ad" value="@Model.site_ad" class="form-control col-md-7 col-xs-12" name="site_ad" required="required" type="text">
+                                    </div>
+                                </div>
+                                <div class="item form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="">
+                                        Site Başlığı <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <input id="site_baslik" value="@Model.site_baslik" class="form-control col-md-7 col-xs-12" name="site_baslik" required="required" type="text">
+                                    </div>
+                                </div>
+                                <div class="item form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="website">
+                                        Hakkımızda <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <textarea id="site_hakkimizda" required="required" name="site_hakkimizda" class="form-control col-md-7 col-xs-12">@Model.site_hakkimizda</textarea>
+                                    </div>
+                                </div>
+                                <div class="item form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="number">
+                                        Telefon <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <input type="tel" id="site_iletisim_telefon" value="@Model.site_iletisim_telefon" name="site_iletisim_telefon" required="required" class="form-control col-md-7 col-xs-12">
+                                    </div>
+                                </div>
+                                <div class="item form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">
+                                        Email <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <input type="email" id="site_iletisim_email" value="@Model.site_iletisim_email" name="site_iletisim_email" required="required" class="form-control col-md-7 col-xs-12">
+                                    </div>
+                                </div>
+                                <div class="item form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">
+                                        Adres <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <textarea id="site_iletisim_adres" required="required" name="site_iletisim_adres" class="form-control col-md-7 col-xs-12">@Model.site_iletisim_adres</textarea>
+                                    </div>
+                                </div>
+                                @*<div>
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">
+                                        Arkaplan Resmi <span class="required">*</span>
+                                    </label>
+                                    <div class="fileupload fileupload-new" data-provides="imageUpload">
+                                        <span class="btn btn-white btn-file">
+                                            <input type="file" name="imageUpload" accept="image/*" class="default" />
+                                        </span>
+                                        <span class="fileupload-preview" style="margin-left:5px;"></span>
+                                        <a href="#" class="close fileupload-exists" data-dismiss="fileupload" style="float: none; margin-left:5px;"></a>
+                                    </div>
+                                </div>*@
+                                <div class="ln_solid"></div>
+                                <div class="form-group">
+                                    <div class="col-md-6 col-md-offset-3">
+                                        <button type="submit" class="btn btn-primary">İptal</button>
+                                        <button id="send" type="submit" class="btn btn-success">Kaydet</button>
+                                    </div>
+                                </div>
+                            }
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

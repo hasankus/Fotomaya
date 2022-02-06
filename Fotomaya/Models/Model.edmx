@@ -1,0 +1,609 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="fotomayaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="A_Foto">
+          <Key>
+            <PropertyRef Name="foto_id" />
+          </Key>
+          <Property Name="foto_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="foto_uzanti" Type="varchar" MaxLength="500" />
+          <Property Name="admin_id" Type="int" />
+        </EntityType>
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="admin_id" />
+          </Key>
+          <Property Name="admin_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="admin_kullaniciadi" Type="varchar" MaxLength="50" />
+          <Property Name="admin_sifre" Type="varchar" MaxLength="50" />
+          <Property Name="admin_sifre_tekrar" Type="varchar" MaxLength="50" />
+          <Property Name="admin_ad" Type="varchar" MaxLength="50" />
+          <Property Name="admin_soyad" Type="varchar" MaxLength="50" />
+          <Property Name="admin_telefon" Type="varchar" MaxLength="11" />
+          <Property Name="admin_email" Type="varchar" MaxLength="50" />
+          <Property Name="admin_adres" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Ayar">
+          <Key>
+            <PropertyRef Name="ayar_id" />
+          </Key>
+          <Property Name="ayar_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="site_ad" Type="varchar" MaxLength="50" />
+          <Property Name="site_baslik" Type="varchar" MaxLength="50" />
+          <Property Name="site_hakkimizda" Type="varchar" MaxLength="5000" />
+          <Property Name="site_iletisim_telefon" Type="varchar" MaxLength="11" />
+          <Property Name="site_iletisim_email" Type="varchar" MaxLength="50" />
+          <Property Name="site_iletisim_adres" Type="varchar" MaxLength="500" />
+          <Property Name="site_arkaplan" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="FotoDurum">
+          <Key>
+            <PropertyRef Name="foto_durum_id" />
+          </Key>
+          <Property Name="foto_durum_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="foto_durum" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Fotograf">
+          <Key>
+            <PropertyRef Name="foto_id" />
+          </Key>
+          <Property Name="foto_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="foto_uzanti" Type="varchar" MaxLength="500" />
+          <Property Name="foto_yuklenme_tarih" Type="datetime" />
+          <Property Name="kullanici_id" Type="int" />
+          <Property Name="kategori_id" Type="int" />
+          <Property Name="foto_durum_id" Type="int" Nullable="false" />
+          <Property Name="ayar_id" Type="int" />
+        </EntityType>
+        <EntityType Name="Fotograf_Kategori">
+          <Key>
+            <PropertyRef Name="kategori_id" />
+          </Key>
+          <Property Name="kategori_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="kategori_ad" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Hakkimizda">
+          <Key>
+            <PropertyRef Name="hakkimizda_id" />
+          </Key>
+          <Property Name="hakkimizda_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="hakkimizda_baslik" Type="varchar" MaxLength="50" />
+          <Property Name="hakkimizda_aciklama" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Hizmet">
+          <Key>
+            <PropertyRef Name="hizmet_id" />
+          </Key>
+          <Property Name="hizmet_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="hizmet_baslik" Type="varchar" MaxLength="50" />
+          <Property Name="hizmet_aciklama" Type="varchar" MaxLength="500" />
+          <Property Name="hizmet_gorsel" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="K_Foto">
+          <Key>
+            <PropertyRef Name="foto_id" />
+          </Key>
+          <Property Name="foto_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="foto_uzanti" Type="varchar" MaxLength="500" />
+          <Property Name="kullanici_id" Type="int" />
+        </EntityType>
+        <EntityType Name="Kullanici">
+          <Key>
+            <PropertyRef Name="kullanici_id" />
+          </Key>
+          <Property Name="kullanici_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="kullanici_email" Type="varchar" MaxLength="50" />
+          <Property Name="kullanici_sifre" Type="varchar" MaxLength="50" />
+          <Property Name="kullanici_sifre_tekrar" Type="varchar" MaxLength="50" />
+          <Property Name="kullanici_ad" Type="varchar" MaxLength="50" />
+          <Property Name="kullanici_soyad" Type="varchar" MaxLength="50" />
+          <Property Name="kullanici_telefon" Type="varchar" MaxLength="11" />
+          <Property Name="kullanici_adres" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK_A_Foto_Admin">
+          <End Role="Admin" Type="Self.Admin" Multiplicity="0..1" />
+          <End Role="A_Foto" Type="Self.A_Foto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Admin">
+              <PropertyRef Name="admin_id" />
+            </Principal>
+            <Dependent Role="A_Foto">
+              <PropertyRef Name="admin_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Fotograf_Ayar">
+          <End Role="Ayar" Type="Self.Ayar" Multiplicity="0..1" />
+          <End Role="Fotograf" Type="Self.Fotograf" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ayar">
+              <PropertyRef Name="ayar_id" />
+            </Principal>
+            <Dependent Role="Fotograf">
+              <PropertyRef Name="ayar_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Fotograf_FotoDurum">
+          <End Role="FotoDurum" Type="Self.FotoDurum" Multiplicity="1" />
+          <End Role="Fotograf" Type="Self.Fotograf" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FotoDurum">
+              <PropertyRef Name="foto_durum_id" />
+            </Principal>
+            <Dependent Role="Fotograf">
+              <PropertyRef Name="foto_durum_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Fotograf_Fotograf_Kategori">
+          <End Role="Fotograf_Kategori" Type="Self.Fotograf_Kategori" Multiplicity="0..1" />
+          <End Role="Fotograf" Type="Self.Fotograf" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fotograf_Kategori">
+              <PropertyRef Name="kategori_id" />
+            </Principal>
+            <Dependent Role="Fotograf">
+              <PropertyRef Name="kategori_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Fotograf_Kullanici">
+          <End Role="Kullanici" Type="Self.Kullanici" Multiplicity="0..1" />
+          <End Role="Fotograf" Type="Self.Fotograf" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kullanici">
+              <PropertyRef Name="kullanici_id" />
+            </Principal>
+            <Dependent Role="Fotograf">
+              <PropertyRef Name="kullanici_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_K_Foto_Kullanici">
+          <End Role="Kullanici" Type="Self.Kullanici" Multiplicity="0..1" />
+          <End Role="K_Foto" Type="Self.K_Foto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kullanici">
+              <PropertyRef Name="kullanici_id" />
+            </Principal>
+            <Dependent Role="K_Foto">
+              <PropertyRef Name="kullanici_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="fotomayaModelStoreContainer">
+          <EntitySet Name="A_Foto" EntityType="Self.A_Foto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ayar" EntityType="Self.Ayar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FotoDurum" EntityType="Self.FotoDurum" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Fotograf" EntityType="Self.Fotograf" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Fotograf_Kategori" EntityType="Self.Fotograf_Kategori" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Hakkimizda" EntityType="Self.Hakkimizda" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Hizmet" EntityType="Self.Hizmet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="K_Foto" EntityType="Self.K_Foto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kullanici" EntityType="Self.Kullanici" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_A_Foto_Admin" Association="Self.FK_A_Foto_Admin">
+            <End Role="Admin" EntitySet="Admin" />
+            <End Role="A_Foto" EntitySet="A_Foto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Fotograf_Ayar" Association="Self.FK_Fotograf_Ayar">
+            <End Role="Ayar" EntitySet="Ayar" />
+            <End Role="Fotograf" EntitySet="Fotograf" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Fotograf_FotoDurum" Association="Self.FK_Fotograf_FotoDurum">
+            <End Role="FotoDurum" EntitySet="FotoDurum" />
+            <End Role="Fotograf" EntitySet="Fotograf" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Fotograf_Fotograf_Kategori" Association="Self.FK_Fotograf_Fotograf_Kategori">
+            <End Role="Fotograf_Kategori" EntitySet="Fotograf_Kategori" />
+            <End Role="Fotograf" EntitySet="Fotograf" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Fotograf_Kullanici" Association="Self.FK_Fotograf_Kullanici">
+            <End Role="Kullanici" EntitySet="Kullanici" />
+            <End Role="Fotograf" EntitySet="Fotograf" />
+          </AssociationSet>
+          <AssociationSet Name="FK_K_Foto_Kullanici" Association="Self.FK_K_Foto_Kullanici">
+            <End Role="Kullanici" EntitySet="Kullanici" />
+            <End Role="K_Foto" EntitySet="K_Foto" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="fotomayaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="A_Foto">
+          <Key>
+            <PropertyRef Name="foto_id" />
+          </Key>
+          <Property Name="foto_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="foto_uzanti" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="admin_id" Type="Int32" />
+          <NavigationProperty Name="Admin" Relationship="Self.FK_A_Foto_Admin" FromRole="A_Foto" ToRole="Admin" />
+        </EntityType>
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="admin_id" />
+          </Key>
+          <Property Name="admin_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="admin_kullaniciadi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="admin_sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="admin_sifre_tekrar" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="admin_ad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="admin_soyad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="admin_telefon" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="admin_email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="admin_adres" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="A_Foto" Relationship="Self.FK_A_Foto_Admin" FromRole="Admin" ToRole="A_Foto" />
+        </EntityType>
+        <EntityType Name="Ayar">
+          <Key>
+            <PropertyRef Name="ayar_id" />
+          </Key>
+          <Property Name="ayar_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="site_ad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="site_baslik" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="site_hakkimizda" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
+          <Property Name="site_iletisim_telefon" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="site_iletisim_email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="site_iletisim_adres" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="site_arkaplan" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Fotograf" Relationship="fotomayaModel.FK_Fotograf_Ayar" FromRole="Ayar" ToRole="Fotograf" />
+        </EntityType>
+        <EntityType Name="FotoDurum">
+          <Key>
+            <PropertyRef Name="foto_durum_id" />
+          </Key>
+          <Property Name="foto_durum_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="foto_durum" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Fotograf" Relationship="Self.FK_Fotograf_FotoDurum" FromRole="FotoDurum" ToRole="Fotograf" />
+        </EntityType>
+        <EntityType Name="Fotograf">
+          <Key>
+            <PropertyRef Name="foto_id" />
+          </Key>
+          <Property Name="foto_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="foto_uzanti" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="foto_yuklenme_tarih" Type="DateTime" Precision="3" />
+          <Property Name="kullanici_id" Type="Int32" />
+          <Property Name="kategori_id" Type="Int32" />
+          <Property Name="foto_durum_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="FotoDurum" Relationship="Self.FK_Fotograf_FotoDurum" FromRole="Fotograf" ToRole="FotoDurum" />
+          <NavigationProperty Name="Fotograf_Kategori" Relationship="Self.FK_Fotograf_Fotograf_Kategori" FromRole="Fotograf" ToRole="Fotograf_Kategori" />
+          <NavigationProperty Name="Kullanici" Relationship="Self.FK_Fotograf_Kullanici" FromRole="Fotograf" ToRole="Kullanici" />
+          <Property Name="ayar_id" Type="Int32" />
+          <NavigationProperty Name="Ayar" Relationship="fotomayaModel.FK_Fotograf_Ayar" FromRole="Fotograf" ToRole="Ayar" />
+        </EntityType>
+        <EntityType Name="Fotograf_Kategori">
+          <Key>
+            <PropertyRef Name="kategori_id" />
+          </Key>
+          <Property Name="kategori_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="kategori_ad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Fotograf" Relationship="Self.FK_Fotograf_Fotograf_Kategori" FromRole="Fotograf_Kategori" ToRole="Fotograf" />
+        </EntityType>
+        <EntityType Name="Hizmet">
+          <Key>
+            <PropertyRef Name="hizmet_id" />
+          </Key>
+          <Property Name="hizmet_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="hizmet_baslik" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="hizmet_aciklama" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="hizmet_gorsel" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="K_Foto">
+          <Key>
+            <PropertyRef Name="foto_id" />
+          </Key>
+          <Property Name="foto_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="foto_uzanti" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="kullanici_id" Type="Int32" />
+          <NavigationProperty Name="Kullanici" Relationship="Self.FK_K_Foto_Kullanici" FromRole="K_Foto" ToRole="Kullanici" />
+        </EntityType>
+        <EntityType Name="Kullanici">
+          <Key>
+            <PropertyRef Name="kullanici_id" />
+          </Key>
+          <Property Name="kullanici_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="kullanici_email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="kullanici_sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="kullanici_sifre_tekrar" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="kullanici_ad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="kullanici_soyad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="kullanici_telefon" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="kullanici_adres" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Fotograf" Relationship="Self.FK_Fotograf_Kullanici" FromRole="Kullanici" ToRole="Fotograf" />
+          <NavigationProperty Name="K_Foto" Relationship="Self.FK_K_Foto_Kullanici" FromRole="Kullanici" ToRole="K_Foto" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_A_Foto_Admin">
+          <End Role="Admin" Type="Self.Admin" Multiplicity="0..1" />
+          <End Role="A_Foto" Type="Self.A_Foto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Admin">
+              <PropertyRef Name="admin_id" />
+            </Principal>
+            <Dependent Role="A_Foto">
+              <PropertyRef Name="admin_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Fotograf_FotoDurum">
+          <End Role="FotoDurum" Type="Self.FotoDurum" Multiplicity="1" />
+          <End Role="Fotograf" Type="Self.Fotograf" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FotoDurum">
+              <PropertyRef Name="foto_durum_id" />
+            </Principal>
+            <Dependent Role="Fotograf">
+              <PropertyRef Name="foto_durum_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Fotograf_Fotograf_Kategori">
+          <End Role="Fotograf_Kategori" Type="Self.Fotograf_Kategori" Multiplicity="0..1" />
+          <End Role="Fotograf" Type="Self.Fotograf" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fotograf_Kategori">
+              <PropertyRef Name="kategori_id" />
+            </Principal>
+            <Dependent Role="Fotograf">
+              <PropertyRef Name="kategori_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Fotograf_Kullanici">
+          <End Role="Kullanici" Type="Self.Kullanici" Multiplicity="0..1" />
+          <End Role="Fotograf" Type="Self.Fotograf" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kullanici">
+              <PropertyRef Name="kullanici_id" />
+            </Principal>
+            <Dependent Role="Fotograf">
+              <PropertyRef Name="kullanici_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_K_Foto_Kullanici">
+          <End Role="Kullanici" Type="Self.Kullanici" Multiplicity="0..1" />
+          <End Role="K_Foto" Type="Self.K_Foto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kullanici">
+              <PropertyRef Name="kullanici_id" />
+            </Principal>
+            <Dependent Role="K_Foto">
+              <PropertyRef Name="kullanici_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="fotomayaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="A_Foto" EntityType="Self.A_Foto" />
+          <EntitySet Name="Admin" EntityType="Self.Admin" />
+          <EntitySet Name="Ayar" EntityType="Self.Ayar" />
+          <EntitySet Name="FotoDurum" EntityType="Self.FotoDurum" />
+          <EntitySet Name="Fotograf" EntityType="Self.Fotograf" />
+          <EntitySet Name="Fotograf_Kategori" EntityType="Self.Fotograf_Kategori" />
+          <EntitySet Name="Hizmet" EntityType="Self.Hizmet" />
+          <EntitySet Name="K_Foto" EntityType="Self.K_Foto" />
+          <EntitySet Name="Kullanici" EntityType="Self.Kullanici" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <AssociationSet Name="FK_A_Foto_Admin" Association="Self.FK_A_Foto_Admin">
+            <End Role="Admin" EntitySet="Admin" />
+            <End Role="A_Foto" EntitySet="A_Foto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Fotograf_FotoDurum" Association="Self.FK_Fotograf_FotoDurum">
+            <End Role="FotoDurum" EntitySet="FotoDurum" />
+            <End Role="Fotograf" EntitySet="Fotograf" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Fotograf_Fotograf_Kategori" Association="Self.FK_Fotograf_Fotograf_Kategori">
+            <End Role="Fotograf_Kategori" EntitySet="Fotograf_Kategori" />
+            <End Role="Fotograf" EntitySet="Fotograf" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Fotograf_Kullanici" Association="Self.FK_Fotograf_Kullanici">
+            <End Role="Kullanici" EntitySet="Kullanici" />
+            <End Role="Fotograf" EntitySet="Fotograf" />
+          </AssociationSet>
+          <AssociationSet Name="FK_K_Foto_Kullanici" Association="Self.FK_K_Foto_Kullanici">
+            <End Role="Kullanici" EntitySet="Kullanici" />
+            <End Role="K_Foto" EntitySet="K_Foto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Fotograf_Ayar" Association="fotomayaModel.FK_Fotograf_Ayar">
+            <End Role="Ayar" EntitySet="Ayar" />
+            <End Role="Fotograf" EntitySet="Fotograf" />
+          </AssociationSet>
+          <EntitySet Name="Hakkimizda" EntityType="fotomayaModel.Hakkimizda" />
+        </EntityContainer>
+        <Association Name="FK_Fotograf_Ayar">
+          <End Type="fotomayaModel.Ayar" Role="Ayar" Multiplicity="0..1" />
+          <End Type="fotomayaModel.Fotograf" Role="Fotograf" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ayar">
+              <PropertyRef Name="ayar_id" />
+            </Principal>
+            <Dependent Role="Fotograf">
+              <PropertyRef Name="ayar_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Hakkimizda">
+          <Key>
+            <PropertyRef Name="hakkimizda_id" />
+          </Key>
+          <Property Name="hakkimizda_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="hakkimizda_baslik" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="hakkimizda_aciklama" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="fotomayaModelStoreContainer" CdmEntityContainer="fotomayaEntities">
+          <EntitySetMapping Name="A_Foto">
+            <EntityTypeMapping TypeName="fotomayaModel.A_Foto">
+              <MappingFragment StoreEntitySet="A_Foto">
+                <ScalarProperty Name="foto_id" ColumnName="foto_id" />
+                <ScalarProperty Name="foto_uzanti" ColumnName="foto_uzanti" />
+                <ScalarProperty Name="admin_id" ColumnName="admin_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Admin">
+            <EntityTypeMapping TypeName="fotomayaModel.Admin">
+              <MappingFragment StoreEntitySet="Admin">
+                <ScalarProperty Name="admin_id" ColumnName="admin_id" />
+                <ScalarProperty Name="admin_kullaniciadi" ColumnName="admin_kullaniciadi" />
+                <ScalarProperty Name="admin_sifre" ColumnName="admin_sifre" />
+                <ScalarProperty Name="admin_sifre_tekrar" ColumnName="admin_sifre_tekrar" />
+                <ScalarProperty Name="admin_ad" ColumnName="admin_ad" />
+                <ScalarProperty Name="admin_soyad" ColumnName="admin_soyad" />
+                <ScalarProperty Name="admin_telefon" ColumnName="admin_telefon" />
+                <ScalarProperty Name="admin_email" ColumnName="admin_email" />
+                <ScalarProperty Name="admin_adres" ColumnName="admin_adres" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ayar">
+            <EntityTypeMapping TypeName="fotomayaModel.Ayar">
+              <MappingFragment StoreEntitySet="Ayar">
+                <ScalarProperty Name="ayar_id" ColumnName="ayar_id" />
+                <ScalarProperty Name="site_ad" ColumnName="site_ad" />
+                <ScalarProperty Name="site_baslik" ColumnName="site_baslik" />
+                <ScalarProperty Name="site_hakkimizda" ColumnName="site_hakkimizda" />
+                <ScalarProperty Name="site_iletisim_telefon" ColumnName="site_iletisim_telefon" />
+                <ScalarProperty Name="site_iletisim_email" ColumnName="site_iletisim_email" />
+                <ScalarProperty Name="site_iletisim_adres" ColumnName="site_iletisim_adres" />
+                <ScalarProperty Name="site_arkaplan" ColumnName="site_arkaplan" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FotoDurum">
+            <EntityTypeMapping TypeName="fotomayaModel.FotoDurum">
+              <MappingFragment StoreEntitySet="FotoDurum">
+                <ScalarProperty Name="foto_durum_id" ColumnName="foto_durum_id" />
+                <ScalarProperty Name="foto_durum" ColumnName="foto_durum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Fotograf">
+            <EntityTypeMapping TypeName="fotomayaModel.Fotograf">
+              <MappingFragment StoreEntitySet="Fotograf">
+                <ScalarProperty Name="ayar_id" ColumnName="ayar_id" />
+                <ScalarProperty Name="foto_id" ColumnName="foto_id" />
+                <ScalarProperty Name="foto_uzanti" ColumnName="foto_uzanti" />
+                <ScalarProperty Name="foto_yuklenme_tarih" ColumnName="foto_yuklenme_tarih" />
+                <ScalarProperty Name="kullanici_id" ColumnName="kullanici_id" />
+                <ScalarProperty Name="kategori_id" ColumnName="kategori_id" />
+                <ScalarProperty Name="foto_durum_id" ColumnName="foto_durum_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Fotograf_Kategori">
+            <EntityTypeMapping TypeName="fotomayaModel.Fotograf_Kategori">
+              <MappingFragment StoreEntitySet="Fotograf_Kategori">
+                <ScalarProperty Name="kategori_id" ColumnName="kategori_id" />
+                <ScalarProperty Name="kategori_ad" ColumnName="kategori_ad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Hizmet">
+            <EntityTypeMapping TypeName="fotomayaModel.Hizmet">
+              <MappingFragment StoreEntitySet="Hizmet">
+                <ScalarProperty Name="hizmet_id" ColumnName="hizmet_id" />
+                <ScalarProperty Name="hizmet_baslik" ColumnName="hizmet_baslik" />
+                <ScalarProperty Name="hizmet_aciklama" ColumnName="hizmet_aciklama" />
+                <ScalarProperty Name="hizmet_gorsel" ColumnName="hizmet_gorsel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="K_Foto">
+            <EntityTypeMapping TypeName="fotomayaModel.K_Foto">
+              <MappingFragment StoreEntitySet="K_Foto">
+                <ScalarProperty Name="foto_id" ColumnName="foto_id" />
+                <ScalarProperty Name="foto_uzanti" ColumnName="foto_uzanti" />
+                <ScalarProperty Name="kullanici_id" ColumnName="kullanici_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kullanici">
+            <EntityTypeMapping TypeName="fotomayaModel.Kullanici">
+              <MappingFragment StoreEntitySet="Kullanici">
+                <ScalarProperty Name="kullanici_id" ColumnName="kullanici_id" />
+                <ScalarProperty Name="kullanici_email" ColumnName="kullanici_email" />
+                <ScalarProperty Name="kullanici_sifre" ColumnName="kullanici_sifre" />
+                <ScalarProperty Name="kullanici_sifre_tekrar" ColumnName="kullanici_sifre_tekrar" />
+                <ScalarProperty Name="kullanici_ad" ColumnName="kullanici_ad" />
+                <ScalarProperty Name="kullanici_soyad" ColumnName="kullanici_soyad" />
+                <ScalarProperty Name="kullanici_telefon" ColumnName="kullanici_telefon" />
+                <ScalarProperty Name="kullanici_adres" ColumnName="kullanici_adres" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="fotomayaModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Hakkimizda">
+            <EntityTypeMapping TypeName="fotomayaModel.Hakkimizda">
+              <MappingFragment StoreEntitySet="Hakkimizda">
+                <ScalarProperty Name="hakkimizda_aciklama" ColumnName="hakkimizda_aciklama" />
+                <ScalarProperty Name="hakkimizda_baslik" ColumnName="hakkimizda_baslik" />
+                <ScalarProperty Name="hakkimizda_id" ColumnName="hakkimizda_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

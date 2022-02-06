@@ -1,0 +1,25 @@
+﻿@model Fotomaya.Models.A_Foto
+@{
+    ViewBag.Title = "A_FotoDegistir";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="right_col" role="main">
+    <div class="">
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <form action="/Admin/A_FotoDegistir/@Session["AdminID"]" method="post" enctype="multipart/form-data">
+                        @Html.HiddenFor(model => model.admin_id)
+                        <hr />
+                        <input type="file" name="imageUpload" id="imageUpload" class="default" accept="image/*" />
+                        <hr />
+                        <input type="submit" value="Kaydet" class="btn btn-success" />
+                        <hr />
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

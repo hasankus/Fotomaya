@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6fff7403921f4153a6e759c17450d061" Name="Diagram1">
+        <EntityTypeShape EntityType="fotomayaModel.A_Foto" Width="1.5" PointX="8" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="fotomayaModel.Admin" Width="1.5" PointX="5.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="fotomayaModel.Ayar" Width="1.5" PointX="5.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="fotomayaModel.FotoDurum" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="fotomayaModel.Fotograf" Width="1.5" PointX="3" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="fotomayaModel.Fotograf_Kategori" Width="1.5" PointX="0.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="fotomayaModel.Hizmet" Width="1.5" PointX="7.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="fotomayaModel.K_Foto" Width="1.5" PointX="3" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="fotomayaModel.Kullanici" Width="1.5" PointX="0.75" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="fotomayaModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="8.75" IsExpanded="true" />
+        <AssociationConnector Association="fotomayaModel.FK_A_Foto_Admin" ManuallyRouted="false" />
+        <AssociationConnector Association="fotomayaModel.FK_Fotograf_FotoDurum" ManuallyRouted="false" />
+        <AssociationConnector Association="fotomayaModel.FK_Fotograf_Fotograf_Kategori" ManuallyRouted="false" />
+        <AssociationConnector Association="fotomayaModel.FK_Fotograf_Kullanici" ManuallyRouted="false" />
+        <AssociationConnector Association="fotomayaModel.FK_K_Foto_Kullanici" ManuallyRouted="false" />
+        <AssociationConnector Association="fotomayaModel.FK_Fotograf_Ayar" />
+        <EntityTypeShape EntityType="fotomayaModel.Hakkimizda" Width="1.5" PointX="10.375" PointY="0.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

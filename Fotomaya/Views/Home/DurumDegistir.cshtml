@@ -1,0 +1,85 @@
+﻿@model Fotomaya.Models.Fotograf
+
+@{
+    ViewBag.Title = "DurumDegistir";
+    Layout = "~/Views/Shared/SiteLayout.cshtml";
+}
+
+<div class="site-blocks-cover overlay" style="background-image: url(https://images.hindustantimes.com/img/2021/08/19/1600x900/patrick-dozkVhDyvhQ-unsplash_1628163163817_1629346849962.jpg);" data-aos="fade" data-stellar-background-ratio="0.5">
+    <div class="container">
+        <div class="row align-items-center justify-content-center text-center">
+            <div class="col-md-12">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="right_col" role="main">
+    <div class="">
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_content">
+                        @using (Html.BeginForm(FormMethod.Post))
+                        {
+                            <div class="form-horizontal">
+                                <hr />
+                                <h3 style="text-align:center">Onay Paneli</h3>
+                                <hr />
+                                <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0">
+                                    <thead>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><img src="@Model.foto_uzanti" width="1250" /></td>
+                                            <td>
+                                                <div>
+                                                    @if (Model.foto_durum_id == 1)
+                                                    {
+                                                        <label class="text-danger">Fotoğraf Durumu: @Model.FotoDurum.foto_durum</label>
+                                                    }
+                                                    else
+                                                    {
+                                                        <label class="text-success">Fotoğraf Durumu: @Model.FotoDurum.foto_durum</label>
+                                                    }
+                                                </div>
+                                                <div>
+                                                    <label>Değiştir: </label>
+                                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                                    @Html.HiddenFor(model => model.foto_id)
+                                                    @Html.HiddenFor(model => model.kullanici_id)
+                                                    @Html.HiddenFor(model => model.foto_uzanti)
+                                                    @Html.HiddenFor(model => model.foto_yuklenme_tarih)
+                                                    @Html.HiddenFor(model => model.kategori_id)
+                                                    <select name="foto_durum_id">
+                                                        @if (ViewBag.FotoDurum != null)
+                                                        {
+                                                            if (Model.foto_durum_id == 1)
+                                                            {
+                                                                <option value="1">Onaylı Değil</option>
+                                                                <option value="2">Onaylı</option>
+                                                            }
+                                                            else
+                                                            {
+                                                                <option value="2">Onaylı</option>
+                                                                <option value="1">Onaylı Değil</option>
+                                                            }
+                                                        }
+                                                    </select>
+                                                </div>
+                                                <div class="form-label-left">
+                                                    <input type="submit" value="Kaydet" class="btn btn-default" />
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
